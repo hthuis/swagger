@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
   title: N8N M-Files API
-  version: 1.0.1
-  description: OpenAPI contract gegenereerd uit Postman collection, inclusief folders
+  version: 1.0.0
+  description: OpenAPI YAML gegenereerd uit Postman collection, inclusief folders
     als tags.
 servers:
 - url: https://example.invalid
