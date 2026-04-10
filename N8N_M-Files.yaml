@@ -1,11 +1,10 @@
 openapi: 3.0.0
 info:
-  title: N8N M-Files Copy
+  title: N8N M-Files
   version: 1.0.0
-  description: ''
+  description: API naar de Siers M-Files omgeving
 servers:
-  - url: "https://sierstest.app.n8n.cloud/webhook"
-  - url: "https://siers.app.n8n.cloud/webhook"
+  - url: '{{base_url}}'
 paths:
   /mfiles/subproject:
     post:
