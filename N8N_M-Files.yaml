@@ -1,134 +1,42 @@
-openapi: 3.0.0
+openapi: 3.0.3
 info:
-  title: N8N M-Files
+  title: N8N M-Files API
   version: 1.0.0
-  description: API naar de Siers M-Files omgeving
+  description: OpenAPI contract gegenereerd uit Postman collection
 servers:
-  - url: '{{base_url}}'
+- url: https://example.invalid
 paths:
   /mfiles/subproject:
     post:
-      summary: create subproject HOP
+      summary: create subproject IN BEWERKING
       responses:
-        '201':
-          description: '201'
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  ObjectGUID:
-                    type: string
-                  ObjectID:
-                    type: string
-                    format: color
-              example:
-                ObjectGUID: '{A64D31AF-E8DC-4DE9-8772-012DEAE4ED22}'
-                ObjectID: '413'
-      tags:
-        - Subproject
-      description: Het format van de oude JSON, deze is compatible met deze API
+        '200':
+          description: Success
       requestBody:
+        required: true
         content:
           application/json:
-            schema:
-              type: object
-              properties:
-                ClientID:
-                  type: string
-                Method:
-                  type: string
-                Nummer:
-                  type: string
-                Omschrijving:
-                  type: string
-                Hoofdproject:
-                  type: string
-                Status:
-                  type: string
-                Regio:
-                  type: string
-                Uitvoeringstype:
-                  type: string
-                Bedrijfsleider:
-                  type: string
-                Teamleider:
-                  type: string
-                Werkvoorbereider:
-                  type: string
-                Uitvoerder:
-                  type: string
-                Plaats:
-                  type: string
-                Gemeente:
-                  type: string
-                Projectreferentie:
-                  type: string
-                Kenmerk:
-                  type: string
             example:
-              ClientID: oude call
-              Method: wordt genegeerd
-              Nummer: Z00000
-              Omschrijving: het nieuwe subproject nummer 4
-              Hoofdproject: AA00001
-              Status: wordt genegeerd
-              Regio: 6BCE4B38-4A23-4ED5-9C47-0A21AB9A06E9
-              Uitvoeringstype: wordt genegeerd
-              Bedrijfsleider: Henk Bente
-              Teamleider: Frank Wolsink
-              Werkvoorbereider: Frank Wolsink
-              Uitvoerder: Frank Wolsink
+              Hoofdproject: Z00000
+              Nummer: AA00000
+              Omschrijving: Project omschrijving
+              Onderdeel: onderdeel GUID (was Regio) - WORDT ALLEEN GEBRUIKT INDIEN
+                HET HOOFDPROJECT NIET BESTAAT
+              Verantwoordelijke1: Pietje Pukketje
+              Verantwoordelijke2: Henk de Vries
+              Verantwoordelijke3: Jan Janssen
+              Verantwoordelijke4: Kaatje Puk
+              Verantwoordelijke5: ''
               Plaats: Oldenzaal
-              Gemeente: wordt genegeerd
-              Projectreferentie: wordt genegeerd
-              Kenmerk: wordt genegeerd
     put:
       summary: update subproject HOP
-      responses: {}
-      tags:
-        - Subproject
-      description: Een subproject wordt ge-update.
+      responses:
+        '200':
+          description: Success
       requestBody:
+        required: true
         content:
           application/json:
-            schema:
-              type: object
-              properties:
-                ClientID:
-                  type: string
-                Method:
-                  type: string
-                ObjectGUID:
-                  type: string
-                Nummer:
-                  type: string
-                Omschrijving:
-                  type: string
-                Hoofdproject:
-                  type: string
-                Status:
-                  type: string
-                Regio:
-                  type: string
-                Uitvoeringstype:
-                  type: string
-                Bedrijfsleider:
-                  type: string
-                Teamleider:
-                  type: string
-                Werkvoorbereider:
-                  type: string
-                Uitvoerder:
-                  type: string
-                Plaats:
-                  type: string
-                Gemeente:
-                  type: string
-                Projectreferentie:
-                  type: string
-                Kenmerk:
-                  type: string
             example:
               ClientID: oude call
               Method: wordt genegeerd
@@ -149,88 +57,26 @@ paths:
               Kenmerk: wordt genegeerd
     get:
       summary: get subproject
-      parameters:
-        - name: nummer
-          in: query
-          description: subprojectnummer
-          schema:
-            type: string
-          example: AA00121
       responses:
         '200':
-          description: '200'
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  subprojecten:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        ObjectGUID:
-                          type: string
-                        ObjectID:
-                          type: integer
-                        nummer:
-                          type: string
-                        naam:
-                          type: string
-                          format: style
-                        hoofdproject:
-                          type: string
-              example:
-                subprojecten:
-                  - ObjectGUID: '{E2B0C29C-096C-40BE-9EC4-3E4BAD96DC3D}'
-                    ObjectID: 344
-                    nummer: AA00121
-                    naam: Test 1 april 11:58
-                    hoofdproject: Z00012 AA00121
-                  - ObjectGUID: '{D72D3429-A341-45A4-9A7C-543FEAE8E23F}'
-                    ObjectID: 345
-                    nummer: AA00121
-                    naam: '%PROPERTY_{PD.SubprojectNaam}%'
-                    hoofdproject: Z00012 AA00121
-      tags:
-        - Subproject
-      description: een subproject wordt uitgelezen
+          description: Success
+      parameters:
+      - name: nummer
+        in: query
+        required: false
+        schema:
+          type: string
+        description: subprojectnummer
   /mfiles/dossier:
     post:
       summary: create dossier HOP
-      responses: {}
-      tags:
-        - Dossier
+      responses:
+        '200':
+          description: Success
       requestBody:
+        required: true
         content:
           application/json:
-            schema:
-              type: object
-              properties:
-                ClientID:
-                  type: string
-                Method:
-                  type: string
-                Code:
-                  type: string
-                Omschrijving:
-                  type: string
-                Project:
-                  type: string
-                Engineer:
-                  type: string
-                Discipline:
-                  type: string
-                SoortWerk:
-                  type: string
-                Opdrachtgever:
-                  type: string
-                OGVerantwoordelijke:
-                  type: string
-                OGInkoopcode:
-                  type: string
-                Prijsboek:
-                  type: string
             example:
               ClientID: oude call
               Method: wordt genegeerd
@@ -246,134 +92,78 @@ paths:
               Prijsboek: wordt genegeerd
     get:
       summary: get dossier
-      parameters:
-        - name: nummer
-          in: query
-          description: nummer van het dossier
-          schema:
-            type: string
-          example: IO008500
       responses:
         '200':
-          description: '200'
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  dossiers:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        ObjectGUID:
-                          type: string
-                        ObjectID:
-                          type: integer
-                        nummer:
-                          type: string
-                        naam:
-                          type: string
-                        subproject:
-                          type: string
-              example:
-                dossiers:
-                  - ObjectGUID: '{87878676-B41E-4C1E-87A5-BD3218E242CF}'
-                    ObjectID: 27
-                    nummer: IO008500
-                    naam: ' - VWTI'
-                    subproject: AA04518
-      tags:
-        - Dossier
+          description: Success
+      parameters:
+      - name: nummer
+        in: query
+        required: false
+        schema:
+          type: string
+        description: nummer van het dossier
   /mfiles/url_subproject:
     post:
       summary: project url HOP
-      responses: {}
-      tags:
-        - URL
-      description: project URL ophalen met oude JSON
+      responses:
+        '200':
+          description: Success
       requestBody:
+        required: true
         content:
           application/json:
-            schema:
-              type: object
-              properties:
-                ClientID:
-                  type: string
-                Method:
-                  type: string
-                ObjectGUID:
-                  type: string
             example:
               ClientID: oude call
               Method: wordt genegeerd
               ObjectGUID: '{E0E56B22-7656-4F4C-9575-094477A79D75}'
     get:
       summary: project url
+      responses:
+        '200':
+          description: Success
       parameters:
-        - name: subprojectGUID
-          in: query
-          description: GUID van het subproject
-          schema:
-            type: string
-          example: '{E0E56B22-7656-4F4C-9575-094477A79D75}'
-      responses: {}
-      tags:
-        - URL
-      description: project URL ophalen
+      - name: subprojectGUID
+        in: query
+        required: false
+        schema:
+          type: string
+        description: GUID van het subproject
   /mfiles/url_dossier:
     post:
       summary: dossier url HOP
-      responses: {}
-      tags:
-        - URL
-      description: dossier URL ophalen met oude JSON
+      responses:
+        '200':
+          description: Success
       requestBody:
+        required: true
         content:
           application/json:
-            schema:
-              type: object
-              properties:
-                ClientID:
-                  type: string
-                Method:
-                  type: string
-                ObjectGUID:
-                  type: string
             example:
               ClientID: oude call
               Method: wordt genegeerd
               ObjectGUID: '{87878676-B41E-4C1E-87A5-BD3218E242CF}'
     get:
       summary: dossier url
+      responses:
+        '200':
+          description: Success
       parameters:
-        - name: dossierGUID
-          in: query
-          description: GUID van het Dossier
-          schema:
-            type: string
-          example: '{87878676-B41E-4C1E-87A5-BD3218E242CF}'
-      responses: {}
-      tags:
-        - URL
-      description: dossier URL ophalen
+      - name: dossierGUID
+        in: query
+        required: false
+        schema:
+          type: string
+        description: GUID van het Dossier
   /mfiles/hoofdproject:
     get:
       summary: get hoofdproject
+      responses:
+        '200':
+          description: Success
       parameters:
-        - name: nummer
-          in: query
-          description: nummer van het hoofdproject
-          schema:
-            type: string
-          example: Z00000
-      responses: {}
-      tags:
-        - Hoofdproject
-components:
-  securitySchemes:
-    BasicAuth:
-      type: http
-      scheme: basic
-security:
-  - BasicAuth: []
+      - name: nummer
+        in: query
+        required: false
+        schema:
+          type: string
+        description: nummer van het hoofdproject
